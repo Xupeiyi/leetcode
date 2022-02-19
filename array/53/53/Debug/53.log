@@ -1,0 +1,4 @@
+﻿  53.cpp
+D:\work\leetcode\数组\53\53\53.cpp(15,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\work\leetcode\数组\53\53\53.cpp(16,19): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+  53.vcxproj -> D:\work\leetcode\数组\53\Debug\53.exe
