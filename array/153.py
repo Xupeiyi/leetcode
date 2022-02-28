@@ -21,6 +21,7 @@ class Solution:
             else:
                 return
 
+
 if __name__ == '__main__':
     s = Solution()
     ans = s.findMin([7, 8, 1, 2, 3, 4, 5, 6])
