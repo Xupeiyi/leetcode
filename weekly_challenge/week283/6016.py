@@ -3,7 +3,7 @@ def pos_to_cr(pos):
     r = int(pos[1])
     return c, r
 
-letters = 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'.split(' ')
+letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 
 class Solution:
