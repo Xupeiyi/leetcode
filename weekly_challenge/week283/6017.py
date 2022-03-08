@@ -5,11 +5,11 @@ def sum_range(start, end):
     return (start + end) * (end - start + 1) // 2
 
 
-# 边界条件难以处理？手动设置极端值作为边界
+# 边界条件难以处理？手动设置极端值作为边界.
 class Solution:
     def minimalKSum(self, nums: List[int], k: int) -> int:
         nums = sorted(nums)
-        nums = [0] + nums + [inf]
+        nums = [0] + nums + [inf]  # 如果不在两边加入最小值和最大值，逻辑会变得十分复杂
         diffs = [nums[i] - nums[i-1] - 1 for i in range(1, len(nums))]
 
         res = 0
