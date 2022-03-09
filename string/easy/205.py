@@ -7,7 +7,9 @@ class Solution1:
         diff = dict()
         for i in range(len(s)):
             if s[i] not in diff:
-                if t[i] not in diff.values():
+                # 其实这样不太高效，因为dict.values() 不像dict.keys(), 它不是 set-like的
+                # 更高效的做法是再建立一个 t[i]->s[i]的字典， 维护双射关系
+                if t[i] not in diff.values():  
                     diff[s[i]] = t[i]
                 else:
                     return False
