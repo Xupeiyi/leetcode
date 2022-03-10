@@ -3,7 +3,7 @@ from math import inf
 
 from sortedcontainers import SortedSet
 
-class Solution:
+class Solution1:
     def containsNearbyAlmostDuplicate(self, nums: List[int], k: int, t: int) -> bool:
         window = SortedSet([-inf, inf])  # 最好使用ordered set, 但python 标准库不支持
         
@@ -18,6 +18,33 @@ class Solution:
                 window.discard(nums[i-k])  
             
         return False
+
+
+# 桶排序
+class Solution:
+
+    def containsNearbyAlmostDuplicate(self, nums, k, t):
+        size = t + 1
+        def bucket_idx(n):
+            nonlocal size
+            return (n + 1) // size - 1 if n < 0 else n // size
+        
+        buckets = dict()
+        for i, num in enumerate(nums):
+            idx = bucket_idx(num)
+            if idx in buckets:
+                return True
+            
+            for adj_idx in [idx-1, idx+1]:
+                if adj_idx in buckets and abs(num - buckets[adj_idx]) <= t:
+                    return True
+            buckets[idx] = num
+
+            if i >= k:
+                buckets.pop(bucket_idx(nums[i-k]))
+        
+        return False
+
 
 if __name__ == '__main__':
     s = Solution()
