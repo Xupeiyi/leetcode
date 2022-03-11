@@ -7,13 +7,10 @@ class Solution:
             3: [0, 1, 2, 3],
         }
         
-        if n == 1 or n == 2:
-            return n
-        
         dp = [[0]*len(to_state) for _ in range(n+1)]
-        dp[2] = [1, 1, 1, 2]
+        dp[1] = [1, 0, 0, 1]
         
-        for i in range(3, n+1):
+        for i in range(2, n+1):
             for j in range(len(to_state)):
                 dp[i][j] = sum(dp[i-1][k] for k in to_state[j])
 
@@ -22,6 +19,6 @@ class Solution:
     
 if __name__ == '__main__':
     s = Solution()
-    ans = s.numTilings(6)
+    ans = s.numTilings(1)
     print(ans)
     
