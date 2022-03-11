@@ -8,6 +8,7 @@ class Solution:
         return w1 * h1 + w2 * h2 - overlapped
 
 
+
 if __name__ == '__main__':
     s = Solution()
     ans = s.computeArea(-5, -5, 0, -4, -3, -3, 3, 3)
