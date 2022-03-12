@@ -23,6 +23,8 @@ class Solution:
                 end = mid - 1
         
         return 0
+
+        
 if __name__ == '__main__':
     s = Solution()
     print(s.hIndex([1]))
