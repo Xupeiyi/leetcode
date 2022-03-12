@@ -7,7 +7,5 @@ class Solution:
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
         """
-        target = node.next
-        node.val = target.val
-        node.next = target.next
-        target.next = None
+        node.val = node.next.val
+        node.next = node.next.next
