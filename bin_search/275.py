@@ -2,7 +2,7 @@ from typing import List
 from math import inf
 
 # 二分查找的难点在于选择哪一边进行查找
-class Solution:
+class Solution1:
     def hIndex(self, citations: List[int]) -> int:
         
         citations.insert(0, -inf)
@@ -24,6 +24,23 @@ class Solution:
         
         return 0
 
+
+class Solution:
+    def hIndex(self, citations: List[int]) -> int:
+        
+        citations.insert(0, -inf)
+        n = len(citations)
+        start, end = 1, n-1
+
+        while start <= end:
+            mid = (start + end) // 2
+            npapers = n - mid
+            if citations[mid] < npapers:
+                start = mid + 1
+            else:
+                end = mid - 1
+        
+        return n - start
         
 if __name__ == '__main__':
     s = Solution()

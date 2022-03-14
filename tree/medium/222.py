@@ -33,19 +33,17 @@ def countLastLevel(root, width):
     start = 0
     end = 2 ** width - 1
     if checkNode(root, width, end):
-        return end + 1
+        return end
     
     while start <= end:
         mid = (start + end) // 2
         
         if checkNode(root, width, mid):
             start = mid + 1
-            if not checkNode(root, width, start):
-                return mid + 1
         else:
             end = mid - 1
-            if checkNode(root, width, end):
-                return end + 1
+    return end
+
 
 
 class Solution1:
@@ -57,7 +55,7 @@ class Solution1:
         if not width:
             return 1
         last_level_num = countLastLevel(root, width)
-        return 2**width - 1 + last_level_num
+        return 2**width + last_level_num
 
         
 # --------------------------------------------------
@@ -119,7 +117,7 @@ if __name__ == '__main__':
     n5 = TreeNode(1, n2, n4)
     n5.display()
     
-    s = Solution()
+    s = Solution1()
     # w = findWidth(n5)
     # print(w)
     # print(countLastLevel(n5, w))
