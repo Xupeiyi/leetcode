@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "recursion/easy",
+        "linked_list/easy/interview_02_07",
+        "linked_list/easy",
+        "bit",
+        "dynamic_programming/790"
+    ]
+}

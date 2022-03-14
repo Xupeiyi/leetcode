@@ -24,6 +24,7 @@ class Solution1:
 
 
 # 另一种做法：分两次查找， 一次查找最左边的索引， 另一次查找最右边的索引
+# 查找最左边单独拿出来就是35题和278题的答案
 def bisect_leftmost(nums, target):
     start, end = 0, len(nums)-1
     while start <= end:
@@ -35,9 +36,10 @@ def bisect_leftmost(nums, target):
         #                2. nums[end] < target， 则start逐渐增大至start = end + 1, 然后停止循环
         else:
             end = mid - 1
-    return start if start < len(nums) and nums[start] == target else -1
+    return start if start < len(nums) and nums[start] == target else -1  # start指向的是nums中最小的大于等于target的数
 
 # bisect_rightmost与bisect_leftmost完全对称
+# 查找最右边单独拿出来是69题, 74题的答案
 def bisect_rightmost(nums, target):
     start, end = 0, len(nums)-1
     while start <= end:
@@ -46,7 +48,7 @@ def bisect_rightmost(nums, target):
             end = mid - 1
         else:
             start = mid + 1
-    return end if end >= 0 and nums[end] == target else -1
+    return end if end >= 0 and nums[end] == target else -1  # 同理，end指向nums中最大的小于等于target的数
 
 class Solution:
     

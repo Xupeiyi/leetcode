@@ -17,7 +17,7 @@ def bisect_right(sequence, x):
     return lo
 
 
-class Solution:
+class Solution1:
     def searchMatrix(self, matrix, target: int):
         col0 = [row[0] for row in matrix]
         row_idx = bisect_right(col0, target) - 1
@@ -29,6 +29,36 @@ class Solution:
             return False
         
         return True
+
+# 返回最大的小于等于target的元素idx
+def bisect_rightmost(nums, target):
+    
+    start, end = 0, len(nums)-1
+    while start <= end:
+        mid = (start + end) // 2
+
+        if nums[mid] > target:
+            end = mid - 1
+        else:
+            start = mid + 1
+    
+    return end
+
+
+class Solution:
+    def searchMatrix(self, matrix, target: int):
+        col0 = [row[0] for row in matrix]
+        row_idx = bisect_rightmost(col0, target)
+        if row_idx == -1:
+            return False
+            
+        col_idx = bisect_rightmost(matrix[row_idx], target)
+        if col_idx == -1 or matrix[row_idx][col_idx] != target:
+            return False
+        
+        return True
+
+        
         
 
 if __name__ == '__main__':

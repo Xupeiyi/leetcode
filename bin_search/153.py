@@ -3,6 +3,10 @@ from typing import List
 def ordered(seq):
     return seq[0] <= seq[-1]
 
+
+# 思路：target为最小值。 最小值有何特点？ 最小值左边区域有序， 最小值右边区域（包括自身）也有序
+# 得到mid后， 可能mid一边有序，另一边无序 => target在无序的那一边
+# 在无序的那边寻找target，直到mid左右两边都有序
 class Solution:
     def findMin(self, nums: List[int]) -> int:
 

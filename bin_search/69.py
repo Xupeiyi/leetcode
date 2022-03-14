@@ -1,4 +1,4 @@
-class Solution:
+class Solution1:
     def mySqrt(self, x: int) -> int:
         if x == 0:
             return 0
@@ -20,9 +20,22 @@ class Solution:
             elif mid1_square < x:
                 start = mid + 1
 
-    
+
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        start, end = 0, x
+        while start <= end:
+            mid = (start + end) // 2
+
+            if mid * mid > x:
+                end = mid - 1
+            else:
+                start = mid + 1
+        return end
+
+
+
 if __name__ == '__main__':
     s = Solution()
-    for i in range(1000):
-        ans = s.mySqrt(i)
-        print(ans)
+    ans = s.mySqrt(25)
+    print(ans)

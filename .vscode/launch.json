@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch Solution",
+            "request": "launch",
+            "mainClass": "Solution",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch interview0806",
+            "request": "launch",
+            "mainClass": "interview0806",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
             "name": "Python: 当前文件",
             "type": "python",
             "request": "launch",
