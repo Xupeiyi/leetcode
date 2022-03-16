@@ -38,7 +38,6 @@ class Solution:
         return max_word
 
 
-
 if __name__ == '__main__':
     s = Solution()
     words = ["w","wo","wor","worl","world"]
