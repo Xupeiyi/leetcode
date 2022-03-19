@@ -19,20 +19,6 @@ from collections import defaultdict, deque
 #     return dists
 
 
-def find_path_lengths(graph):
-    path_lengths = {0: 0}
-    paths = [graph[0]]
-    curr_length = 0
-    while paths:
-        path = paths.pop(0)
-        curr_length += 1
-        for node in path:
-            if node not in path_lengths:
-                path_lengths[node] = curr_length
-                next_path = graph[node] - path_lengths.keys()
-                if next_path:
-                    paths.append(next_path)
-    return path_lengths
 def find_dists(graph):
     dists = [-1]*len(graph)
     dists[0] = 0
