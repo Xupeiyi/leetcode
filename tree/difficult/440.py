@@ -18,7 +18,6 @@ class Solution:
             if steps <= k:
                 k -= steps
                 cur += 1
-            
             else:
                 cur *= 10
                 k -= 1
