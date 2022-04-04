@@ -23,6 +23,6 @@ public class Solution209 {
     }
     public static void main(String[] args){
         int[] nums = {2, 3, 1, 2, 4, 3};
-        int ans = minSubArrayLen(7, nums);
+        minSubArrayLen(7, nums);
     }
 }
