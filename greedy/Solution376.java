@@ -1,11 +1,13 @@
 class Solution376 {
     public static int nextFarthestNumber(int[] nums, int start, boolean greatest){
         // find the nearest index of a number that has the furthest distance to nums[start]
+        // move one step forward only when the next number is valid
         int end = start;
-        while (end < nums.length-1){ 
-            if (greatest && nums[end] <= nums[end+1]) end++;
-            else if (!greatest && nums[end] >= nums[end+1]) end++;
-            else break;
+        if (greatest){
+            while (end < nums.length-1 && nums[end] <= nums[end+1]) end++;
+        }
+        else{
+            while (end < nums.length-1 && nums[end] >= nums[end+1]) end++;
         }
         return end;
     } 
@@ -20,10 +22,10 @@ class Solution376 {
 
         // find the next largest/smallest number
         boolean greatest = (nums[curr+1] > nums[curr])? true: false;
-        while (curr < nums.length-1){
+        while (curr < nums.length - 1){
             int nextCurr = nextFarthestNumber(nums, curr, greatest);
-            greatest = !greatest;
             if (nextCurr < nums.length && nums[nextCurr] != nums[curr]) ans++;
+            greatest = !greatest;
             curr = nextCurr;
         }
         return ans;
