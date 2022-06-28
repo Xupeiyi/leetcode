@@ -13,8 +13,8 @@ class Solution:
 
         while start < end:
             mid = (start + end) // 2
-            prob = randrange(self.cumsum_w[start-1] + 1, self.cumsum_w[end] + 1)
-            if prob <= self.cumsum_w[mid]:
+            picked = randrange(self.cumsum_w[start-1] + 1, self.cumsum_w[end] + 1)
+            if picked <= self.cumsum_w[mid]:
                 end = mid
             else:
                 start = mid + 1
