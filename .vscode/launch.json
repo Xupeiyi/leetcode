@@ -1,9 +1,103 @@
 {
-    // 使用 IntelliSense 了解相关属性。 
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Solution841",
+            "request": "launch",
+            "mainClass": "java.Solution841",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution841",
+            "request": "launch",
+            "mainClass": "Solution841",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution151",
+            "request": "launch",
+            "mainClass": "Solution151",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution15",
+            "request": "launch",
+            "mainClass": "Solution15",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution376",
+            "request": "launch",
+            "mainClass": "Solution376",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution1004",
+            "request": "launch",
+            "mainClass": "Solution1004",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "name": "Launch via NPM",
+            "request": "launch",
+            "runtimeArgs": [
+                "run-script",
+                "debug"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution930",
+            "request": "launch",
+            "mainClass": "Solution930",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution713",
+            "request": "launch",
+            "mainClass": "Solution713",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution2024",
+            "request": "launch",
+            "mainClass": "Solution2024",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution220",
+            "request": "launch",
+            "mainClass": "Solution220",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution209",
+            "request": "launch",
+            "mainClass": "Solution209",
+            "projectName": "leetcode_f8f51d3a"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution3",
+            "request": "launch",
+            "mainClass": "Solution3",
+            "projectName": "leetcode_f8f51d3a"
+        },
         {
             "type": "java",
             "name": "Launch Solution",
@@ -24,6 +118,12 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
+        },
+        {
+            "type": "node-terminal",
+            "name": "JavaScript Debug Terminal",
+            "request": "launch",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

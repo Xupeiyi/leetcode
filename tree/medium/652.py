@@ -1,5 +1,6 @@
 from TreeBuilder import TreeNode
 import collections
+from typing import Optional, List
 
 
 class Solution:
@@ -22,3 +23,28 @@ class Solution:
         traverse(root)
         return res
 
+
+# 2022-06-05
+class Solution:
+    def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
+
+        traversed = set()
+        ans = []
+        def serialize(root):
+            nonlocal traversed
+            if not root:
+                return '#'
+
+            sl = serialize(root.left)
+            sr = serialize(root.right) 
+            serial = sl + sr + str(root.val)
+
+            if serial in traversed:
+                ans.append(root)
+            
+            traversed.add(serial)
+            return serial
+        serialize(root)
+        return ans
+        
+        

@@ -26,6 +26,32 @@ class Solution1:
         return s[p_start:p_start + p_length]
  
 
+ # 2022-06-06
+class Solution3:
+    def longestPalindrome(self, s: str) -> str:
+        length = len(s)
+        dp = [[0 for _ in range(length)] for _ in range(length)]
+        for i in range(length):
+            dp[i][i] = 1
+
+        longest = s[0]
+        longest_length = 1
+        for k in range(2, length+1):
+            for i in range(length - k + 1):
+                j = i + k - 1
+                if dp[i+1][j-1] == -1:
+                    dp[i][j] = -1
+                else:
+                    if s[i] == s[j]:
+                        dp[i][j] = dp[i+1][j-1] + 2
+                        if dp[i][j] > longest_length:
+                            longest = s[i: j+1]
+                            longest_length = dp[i][j]
+                    else:
+                        dp[i][j] = -1
+        return longest
+
+
 # -------------------------------------------------
 # Solution2
 
@@ -37,7 +63,7 @@ def expand(s, start, end):
     return start + 1, end - 1
 
 
-class Solution:
+class Solution2:
 
     def longestPalindrome(self, s: str):
         start, end = 0, 0
@@ -51,7 +77,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution()
+    s = Solution2()
     ans = s.longestPalindrome("dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
     print(len(ans))
     
