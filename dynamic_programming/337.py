@@ -33,6 +33,28 @@ class Solution:
         
 
 
+
+class Solution:
+    def rob(self, root: TreeNode) -> int:
+        
+        def to_rob_or_not_to_rob(root):
+            if not root:
+                return 0, 0
+            
+            to_rob_left, not_to_rob_left = to_rob_or_not_to_rob(root.left)
+            to_rob_right, not_to_rob_right = to_rob_or_not_to_rob(root.right)
+
+            to_rob_root = root.val + not_to_rob_left + not_to_rob_right
+            not_to_rob_root = max(to_rob_left, not_to_rob_left) + max(to_rob_right, not_to_rob_right)
+            return to_rob_root, not_to_rob_root
+        
+        return max(to_rob_or_not_to_rob(root))
+            
+
+
+
+
+
 if __name__ == '__main__':
     s = Solution()
     

@@ -23,7 +23,27 @@ class Solution1:
             
         return root
 
+# ------------------------------------------------------
+# 改进的层序遍历
 
+class Solution:
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        if not root:
+            return None
+
+        start = root
+        while start and start.left:
+            curr = start
+            while curr:
+                curr.left.next = curr.right
+                if curr.next:
+                    curr.right.next = curr.next.left
+                curr = curr.next
+            start = start.left
+        
+        return root
+
+        
 # ------------------------------------------
 # Solution 2: 后序遍历
 
@@ -45,7 +65,34 @@ class Solution:
 
 def next_val(node):
     return node.next.val if node.next else None
-    
+
+
+# 2022-06-04
+# -----------------------------------------------------
+# 分治
+class Solution2:
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        if not root:
+            return None
+        
+        root.left = self.connect(root.left)
+        root.right = self.connect(root.right)
+
+        l_curr = root.left
+        r_curr = root.right
+        while l_curr and r_curr:
+            l_curr.next = r_curr
+            l_curr = l_curr.right
+            r_curr = r_curr.left
+        
+        return root
+
+
+
+
+            
+
+
     
 if __name__ == '__main__':
     s = Solution()
@@ -58,8 +105,9 @@ if __name__ == '__main__':
     n5 = TreeNode(6, n3, n4)
     
     n6 = TreeNode(7, n2, n5)
-    
-    s.connect(n6)
+    n6.display()
+
+    n6 = s.connect(n6)
     n6.display()
     
     for node in [n0, n1, n2, n3, n4, n5, n6]:

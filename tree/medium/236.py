@@ -1,3 +1,4 @@
+from re import L
 from TreeBuilder import TreeNode
 
 ##################################
@@ -42,7 +43,7 @@ class Solution1:
 # Solution 2
 ##################################
 
-class Solution:
+class Solution1:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         if not root or root == p or root == q:
             return root
@@ -58,6 +59,25 @@ class Solution:
             return left
         else:
             return None
+
+# 2022.6.5
+# -----------------------------------------------
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if not root or root.val == p.val or root.val == q.val:
+            return root
+        
+        ancestor_left = self.lowestCommonAncestor(root.left, p, q)
+        ancestor_right = self.lowestCommonAncestor(root.right, p, q)
+
+        if ancestor_left and ancestor_right:
+            return root
+        elif ancestor_left and not ancestor_right:
+            return ancestor_left
+        elif not ancestor_left and ancestor_right:
+            return ancestor_right
+        else:
+             return None
 
 
 

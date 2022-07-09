@@ -1,3 +1,6 @@
+from typing import List
+
+
 class NestedInteger:
     
     def __init__(self, initializer):
@@ -19,7 +22,7 @@ class NestedInteger:
     
 
 class NestedIterator:
-    def __init__(self, nestedList: [NestedInteger]):
+    def __init__(self, nestedList: List[NestedInteger]):
         self.ends = [ni for ni in nestedList]
         self.searchForInteger()
     
@@ -41,7 +44,30 @@ class NestedIterator:
             else:
                 break
         
-        
+
+class NestedIterator:
+    def __init__(self, nestedList: List[NestedInteger]):
+        self.stack = [ni for ni in nestedList]
+        self.next_int = self.get_next_int()
+
+    # 不断展开nestedInteger直到得到一个Integer, 剩余部分放回stack
+    def get_next_int(self):
+        if not self.stack:
+            return None
+        ni = self.stack.pop(0)
+        if ni.isInteger():
+            return ni.getInteger()
+        else:
+            self.stack = ni.getList() + self.stack
+            return self.get_next_int()
+
+    def next(self) -> int:
+        next_int = self.next_int
+        self.next_int = self.get_next_int()
+        return next_int
+
+    def hasNext(self) -> bool:
+         return bool(self.next_int is not None)
         
 if __name__ == '__main__':
 

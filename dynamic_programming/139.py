@@ -12,7 +12,7 @@ class Solution1:
 
         return dp[-1]
 
-class Solution:
+class Solution2:
     def wordBreak(self, s: str, wordDict) -> bool:
         dp = [True] + [False]*len(s)
         
@@ -26,6 +26,23 @@ class Solution:
         return dp[-1]
     
     
+# 2022-06-16
+from typing import List
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        dp = [False for _ in range(len(s) + 1)]
+        dp[0] = True
+
+        for i in range(1, len(s) + 1):
+            for word in wordDict:
+                length = len(word)
+                if i < length:
+                    continue
+                if s[i-length: i] == word and dp[i-length] == True:
+                    dp[i] = True
+        return dp[-1]
+
+
 if __name__ == '__main__':
     s = Solution()
     ans = s.wordBreak("leetcode", ["leet", "code"])
