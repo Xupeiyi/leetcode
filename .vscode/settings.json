@@ -3,7 +3,12 @@
         "recursion/easy",
         "linked_list/easy/interview_02_07",
         "linked_list/easy",
+        "greedy",
+        "dynamic_programming/790",
+        "double_pointer/medium",
+        "double_pointer/easy",
         "bit",
-        "dynamic_programming/790"
+        "array/sliding_window",
+        "double_pointer/java"
     ]
 }
