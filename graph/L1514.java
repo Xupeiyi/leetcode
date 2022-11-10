@@ -35,7 +35,6 @@ public class L1514 {
         class LogProb {
             int id;  // id of node
             double fromStart;
-
             LogProb(int id, double logProbFromStart){
                 this.id = id;
                 this.fromStart = logProbFromStart;

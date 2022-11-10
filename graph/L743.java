@@ -31,11 +31,11 @@ public class L743 {
         class Distance {
             int id;
             int toStart; // distance to start
-            public Distance(int id, int toStart){
+            Distance(int id, int toStart){
                 this.id = id;
                 this.toStart = toStart;
             }
-        };
+        }    
         PriorityQueue<Distance> queue = new PriorityQueue<>(
             (dist1, dist2) -> {
                 return dist1.toStart - dist2.toStart;

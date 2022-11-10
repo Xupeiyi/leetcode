@@ -4,7 +4,6 @@ import java.util.PriorityQueue;
 import java.util.List;
 
 
-
 public class L1631 {
 
     public static List<int[]> findAdjacents(int nRows, int nCols, int x, int y){
@@ -36,12 +35,13 @@ public class L1631 {
             int x;
             int y;
             int toStart; // distance to start
+            
             public Distance(int x, int y, int toStart){
                 this.x = x;
                 this.y = y;
                 this.toStart = toStart;
             }
-        };
+        }
         PriorityQueue<Distance> queue = new PriorityQueue<>(
             (dist1, dist2) -> {
                 return dist1.toStart - dist2.toStart;
