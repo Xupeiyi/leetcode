@@ -2,6 +2,59 @@ from typing import Optional
 from linkedlist import ListNode
 
 
+# ===============
+# second try
+# ===============
+# 最多也就用了20多分钟吧...第一次为什么用了这么久？
+# 把链表从中间断开可以省下很多麻烦，因为这时两条链表之间互不干涉；
+# 尾部统一指向None，也不需要返回尾指针了 
+def merge(h1, h2):
+    head = ListNode(0)
+    tail = head
+
+    while h1 is not None and h2 is not None:
+        if h1.val <= h2.val:
+            tail.next = h1
+            h1 = h1.next
+        else:
+            tail.next = h2
+            h2 = h2.next        
+        tail = tail.next
+    
+    if h1 is not None:
+        tail.next = h1
+    else:
+        tail.next = h2
+    
+    return head.next
+
+
+class Solution:
+    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head is None or head.next is None:
+            return head
+    
+        fast = head
+        slow = head
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        # break the list from slow
+        mid = slow.next
+        slow.next = None
+
+        h1 = self.sortList(head)
+        h2 = self.sortList(mid)
+
+        return merge(h1, h2)
+
+
+
+# ===============
+# first try
+# ===============
+
 # 这题折腾了两个小时...太弱小了，没有力量
 # 要注意的地方好多， 之后做链表题不把图画清楚绝不动手
 def mergesort(start, end):
@@ -62,7 +115,7 @@ def mergesort(start, end):
     return v_head.next, end  # 这里不小心写成v_end过 
 
 
-class Solution:
+class Solution1:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head:
             return None
@@ -77,11 +130,16 @@ class Solution:
 if __name__ == '__main__':
     s = Solution()
 
-    n5 = ListNode(1)
-    n4 = ListNode(3, n5)
-    n3 = ListNode(1, n4)
-    n2 = ListNode(2, n3)
-    n1 = ListNode(4, n2)
+    n5 = ListNode(4)
+    n4 = ListNode(1, n5)
+    
+    n3 = ListNode(5, n4)
+    n2 = ListNode(3, n3)
+    n1 = ListNode(2, n2)
 
+    # head, tail = merge(n1, n4)
+    # head.print()
+    # tail.print()
     ans = s.sortList(n1)
     ans.print()
+
