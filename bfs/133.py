@@ -42,9 +42,29 @@ def traverse(node):
             for neighbor in curr.neighbors:
                 path.append(neighbor)
         
+# 2nd trial on 07/15/2023
+class Solution2:
+
+    cloned = {}
+
+    def cloneGraph(self, node: 'Node'):
+        if node is None:
+            return None
+
+        if node in self.cloned:
+            return self.cloned[node]
+        
+        self.cloned[node] = Node(val=node.val)
+
+        for neighbor in node.neighbors:
+            n = self.cloneGraph(neighbor)
+            self.cloned[node].neighbors.append(n)
+
+        return self.cloned[node]
+        
 
 if __name__ == '__main__':
-    s = Solution()
+    s = Solution2()
 
     n1 = Node(2)
     n4 = Node(4)
@@ -56,5 +76,4 @@ if __name__ == '__main__':
     n4.neighbors = [n0, n3]
     
     new_n0 = s.cloneGraph(n0)
-    
     traverse(new_n0)
